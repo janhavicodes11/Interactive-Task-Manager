@@ -1,0 +1,200 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Interactive Task Manager</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body data-theme="dark">
+    <nav>
+      <span class="logo-text">TaskFlow</span>
+      <button class="switcher" type="button" aria-label="Toggle theme">
+        🌛
+      </button>
+    </nav>
+
+    <main>
+      <section class="hero">
+        <h1>Interactive Task Manager</h1>
+        <p>
+          A Trello-style task manager built with HTML, CSS, and Vanilla
+          JavaScript.
+        </p>
+      </section>
+
+      <section id="task-container">
+        <h2>Add new task</h2>
+
+        <form>
+          <fieldset>
+            <label for="task-title">Task title</label>
+            <input
+              type="text"
+              id="task-title"
+              name="task-title"
+              placeholder="Example: Learn Event Delegation"
+              value="test"
+            />
+          </fieldset>
+
+          <fieldset>
+            <label for="task-category">Category</label>
+            <select name="category" id="task-category">
+              <option value="0" disabled selected>Select a category</option>
+              <option value="HTML">HTML</option>
+              <option value="CSS">CSS</option>
+              <option value="JavaScript">JavaScript</option>
+            </select>
+          </fieldset>
+
+          <button type="submit" class="form-submit-btn">Add task</button>
+        </form>
+      </section>
+
+      <section id="task-filters">
+        <div class="filters-top">
+          <input type="text" id="search-tasks" placeholder="Search tasks..." />
+
+          <select name="filter-category" id="filter-category">
+            <option value="0" selected>All categories</option>
+            <option value="HTML">HTML</option>
+            <option value="CSS">CSS</option>
+            <option value="JavaScript">JavaScript</option>
+          </select>
+
+          <button class="clear-filters" type="button">Clear Filters</button>
+          <button class="clear-tasks-btn" type="button">Clear Tasks</button>
+        </div>
+
+        <div class="tasks-info-container">
+          <p>Pending: <span class="total-pending">00</span></p>
+          <p>Completed: <span class="total-completed">00</span></p>
+          <p>Total: <span class="total">00</span></p>
+        </div>
+      </section>
+
+      <section id="tasks-grid">
+        <div class="task-column pending">
+          <div class="column-header">
+            <h2>Pending</h2>
+            <span class="total-pending">00</span>
+          </div>
+        </div>
+
+        <div class="task-column completed">
+          <div class="column-header">
+            <h2>Completed</h2>
+            <span class="total-completed">00</span>
+          </div>
+        </div>
+      </section>
+
+      <div class="demo-grid">
+        <section class="panel" id="attributes-demo">
+          <h2>Attributes vs Properties</h2>
+          <p>
+            Type inside the task title field above. The property changes live,
+            but the original HTML attribute stays the same until we explicitly
+            update it.
+          </p>
+
+          <div class="output-box">
+            <p>
+              input.value:
+              <span id="property-output">Original attribute value</span>
+            </p>
+            <p>
+              input.getAttribute("value"):
+              <span id="attribute-output">Original attribute value</span>
+            </p>
+            <p>
+              hasAttribute("data-demo"):
+              <span id="has-attribute-output">false</span>
+            </p>
+          </div>
+
+          <div class="prop-actions">
+            <button class="ghost-btn" id="set-attribute-btn" type="button">
+              setAttribute()
+            </button>
+            <button class="ghost-btn" id="remove-attribute-btn" type="button">
+              removeAttribute()
+            </button>
+          </div>
+        </section>
+
+        <section class="panel" id="event-demo">
+          <h2>Event Propagation Demo</h2>
+          <p>
+            Use the same nested boxes to test bubbling and capturing in the
+            console and on screen.
+          </p>
+
+          <div class="event-demo-box grandparent-box">
+            Grandparent
+            <div class="parent-box">
+              Parent
+              <button class="primary-btn child-btn" type="button">
+                Child Button
+              </button>
+            </div>
+          </div>
+
+          <div class="event-actions">
+            <button class="ghost-btn" id="run-bubbling" type="button">
+              Run Bubbling Demo
+            </button>
+            <button class="ghost-btn" id="run-capturing" type="button">
+              Run Capturing Demo
+            </button>
+          </div>
+
+          <ol class="log-list" id="event-log"></ol>
+        </section>
+      </div>
+
+      <section class="panel" id="pipeline-section">
+        <h2>Browser Rendering Pipeline</h2>
+        <p>Click any card to highlight a step and read a short explanation.</p>
+
+        <div class="pipeline">
+          <button class="pipeline-card" data-step="HTML">HTML</button>
+          <span class="arrow">→</span>
+          <button class="pipeline-card" data-step="Parsing">Parsing</button>
+          <span class="arrow">→</span>
+          <button class="pipeline-card" data-step="Tokenization">
+            Tokenization
+          </button>
+          <span class="arrow">→</span>
+          <button class="pipeline-card" data-step="DOM Tree">DOM Tree</button>
+          <span class="arrow">→</span>
+
+          <button class="pipeline-card" data-step="CSS">CSS</button>
+          <span class="arrow">→</span>
+          <button class="pipeline-card" data-step="CSSOM Tree">
+            CSSOM Tree
+          </button>
+          <span class="arrow">→</span>
+
+          <button class="pipeline-card" data-step="DOM Tree + CSSOM Tree">
+            DOM Tree + CSSOM Tree
+          </button>
+          <span class="arrow">→</span>
+          <button class="pipeline-card" data-step="Render Tree">
+            Render Tree
+          </button>
+        </div>
+
+        <div class="output-box">
+          <p id="pipeline-output">
+            Note: Select a rendering step to see the explanation.
+          </p>
+        </div>
+      </section>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>
